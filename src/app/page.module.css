@@ -1,0 +1,41 @@
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.header p,
+.muted {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 16px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+}
+
+.card ul {
+  list-style: none;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.card li + li {
+  margin-top: 4px;
+}
