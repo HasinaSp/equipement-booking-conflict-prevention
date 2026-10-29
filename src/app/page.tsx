@@ -1,5 +1,6 @@
 import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { BookingForm } from "./booking-form";
 import styles from "./page.module.css";
 
 const dateFormat = new Intl.DateTimeFormat("en-GB", {
@@ -32,6 +33,10 @@ export default async function Home() {
       {equipment.length === 0 ? (
         <p className={styles.muted}>No equipment yet. Run `npm run db:seed` to add sample data.</p>
       ) : (
+        <BookingForm equipment={equipment.map(({ id, name }) => ({ id, name }))} />
+      )}
+
+      {equipment.length > 0 && (
         <section className={styles.grid}>
           {equipment.map((item) => (
             <article key={item.id} className={styles.card}>

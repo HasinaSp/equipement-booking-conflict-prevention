@@ -1,0 +1,62 @@
+.form {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.form h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.fields input,
+.fields select,
+.form button {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.form button {
+  cursor: pointer;
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.success,
+.error {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: #15803d;
+}
+
+.error {
+  color: #dc2626;
+}
