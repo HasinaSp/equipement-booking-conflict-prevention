@@ -6,7 +6,10 @@ export class NotFoundError extends Error {
 }
 
 export class ConflictError extends Error {
-  constructor(message: string) {
+  constructor(
+    message: string,
+    readonly details?: unknown,
+  ) {
     super(message);
     this.name = "ConflictError";
   }

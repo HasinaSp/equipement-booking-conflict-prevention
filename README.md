@@ -72,7 +72,14 @@ npm test
 
 ## API
 
-All payloads are JSON. Dates use ISO 8601. A reservation covers the half-open interval `[startsAt, endsAt)`.
+All payloads are JSON. Dates use ISO 8601. A reservation covers the half-open interval `[startsAt, endsAt)`, so back-to-back bookings (one ends at 10:00, the next starts at 10:00) are allowed.
+
+### Overlap prevention
+
+Two reservations of the same equipment can never overlap. This is enforced in two layers:
+
+1. **Service check**: before inserting, `createReservation` looks for an existing reservation of the same equipment that starts before the new one ends and ends after it starts, and returns `409` with the conflicting booking.
+2. **Database constraint**: a PostgreSQL exclusion constraint (`Reservation_no_overlap`, using `btree_gist`) guarantees the rule even when two requests arrive at the same time.
 
 | Method | Endpoint                               | Description                         |
 | ------ | -------------------------------------- | ----------------------------------- |
@@ -94,7 +101,7 @@ curl -X POST http://localhost:3000/api/reservations \
 | 201    | Created                                     |
 | 400    | Validation failed (`details` lists fields)  |
 | 404    | Referenced equipment does not exist         |
-| 409    | Conflict (for example a duplicate name)     |
+| 409    | Conflict: the equipment is already reserved during that time (`details.conflictingReservation`), or the equipment name is taken |
 
 ## Project structure
 
