@@ -21,7 +21,7 @@ export function errorResponse(error: unknown) {
     return NextResponse.json({ error: error.message }, { status: 404 });
   }
   if (error instanceof ConflictError) {
-    return NextResponse.json({ error: error.message }, { status: 409 });
+      return NextResponse.json({ error: error.message, details: error.details }, { status: 409 });
   }
   console.error(error);
   return NextResponse.json({ error: "Internal server error" }, { status: 500 });
