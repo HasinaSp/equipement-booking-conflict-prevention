@@ -69,6 +69,7 @@ npm test
 | `npm run db:deploy` | Apply pending migrations                                 |
 | `npm run db:seed`   | Load sample equipment                                    |
 | `npm run archive`   | Package a milestone as a project archive (see below)     |
+| `npm run deliverables` | Package the starting and final code as `archives/deliverables.zip` |
 
 ## API
 

@@ -14,7 +14,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
-    "archive": "bash scripts/archive-milestone.sh"
+    "archive": "bash scripts/archive-milestone.sh",
+    "deliverables": "bash scripts/package-deliverables.sh"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.1",
