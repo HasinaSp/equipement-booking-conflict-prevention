@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import styles from "./booking-form.module.css";
 
 type EquipmentOption = { id: string; name: string };
@@ -18,7 +18,7 @@ export function BookingForm({ equipment }: { equipment: EquipmentOption[] }) {
   const [status, setStatus] = useState<Status>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     setSubmitting(true);
